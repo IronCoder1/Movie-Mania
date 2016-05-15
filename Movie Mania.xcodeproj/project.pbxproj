@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		6C0982E81CE7ED9D0075EDEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0982E71CE7ED9D0075EDEE /* main.m */; };
 		6C0982EB1CE7ED9D0075EDEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0982EA1CE7ED9D0075EDEE /* AppDelegate.m */; };
-		6C0982EE1CE7ED9D0075EDEE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0982ED1CE7ED9D0075EDEE /* ViewController.m */; };
 		6C0982F11CE7ED9D0075EDEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C0982EF1CE7ED9D0075EDEE /* Main.storyboard */; };
 		6C0982F31CE7ED9D0075EDEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C0982F21CE7ED9D0075EDEE /* Assets.xcassets */; };
 		6C0982F61CE7ED9D0075EDEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C0982F41CE7ED9D0075EDEE /* LaunchScreen.storyboard */; };
+		6C0982FF1CE897450075EDEE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0982FE1CE897450075EDEE /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +20,12 @@
 		6C0982E71CE7ED9D0075EDEE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6C0982E91CE7ED9D0075EDEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6C0982EA1CE7ED9D0075EDEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6C0982EC1CE7ED9D0075EDEE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6C0982ED1CE7ED9D0075EDEE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6C0982F01CE7ED9D0075EDEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6C0982F21CE7ED9D0075EDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C0982F51CE7ED9D0075EDEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C0982F71CE7ED9D0075EDEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C0982FD1CE897450075EDEE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		6C0982FE1CE897450075EDEE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +60,9 @@
 			children = (
 				6C0982E91CE7ED9D0075EDEE /* AppDelegate.h */,
 				6C0982EA1CE7ED9D0075EDEE /* AppDelegate.m */,
-				6C0982EC1CE7ED9D0075EDEE /* ViewController.h */,
-				6C0982ED1CE7ED9D0075EDEE /* ViewController.m */,
 				6C0982EF1CE7ED9D0075EDEE /* Main.storyboard */,
+				6C0982FD1CE897450075EDEE /* MainViewController.h */,
+				6C0982FE1CE897450075EDEE /* MainViewController.m */,
 				6C0982F21CE7ED9D0075EDEE /* Assets.xcassets */,
 				6C0982F41CE7ED9D0075EDEE /* LaunchScreen.storyboard */,
 				6C0982F71CE7ED9D0075EDEE /* Info.plist */,
@@ -149,8 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C0982EE1CE7ED9D0075EDEE /* ViewController.m in Sources */,
 				6C0982EB1CE7ED9D0075EDEE /* AppDelegate.m in Sources */,
+				6C0982FF1CE897450075EDEE /* MainViewController.m in Sources */,
 				6C0982E81CE7ED9D0075EDEE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

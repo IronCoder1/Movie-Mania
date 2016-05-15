@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 
+@property (strong, nonatomic) Movie *aMovie;
+@property (strong, nonatomic) NSMutableArray *movieListArray;
 @end

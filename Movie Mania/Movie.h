@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Movie : NSObject
 
@@ -18,7 +19,8 @@
 @property (copy, nonatomic) NSString *rated;
 @property (copy, nonatomic) NSString *shortPlot;
 @property (copy, nonatomic) NSString *longPlot;
-@property (assign, nonatomic) NSDate *releaseDate;
+@property (copy, nonatomic) NSString *releaseDate;
+@property (strong, nonatomic) UIImage *posterImage;
 
 
 @end

@@ -16,6 +16,7 @@
 		6C0983021CE89BC30075EDEE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0983011CE89BC30075EDEE /* DetailViewController.m */; };
 		6C0983081CE8B4D80075EDEE /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0983071CE8B4D80075EDEE /* Movie.m */; };
 		6C09830E1CE904A30075EDEE /* CellViewMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C09830D1CE904A30075EDEE /* CellViewMain.m */; };
+		6C0983111CEA04E30075EDEE /* MustWatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0983101CEA04E30075EDEE /* MustWatchTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		6C0983071CE8B4D80075EDEE /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		6C09830C1CE904A30075EDEE /* CellViewMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellViewMain.h; sourceTree = "<group>"; };
 		6C09830D1CE904A30075EDEE /* CellViewMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellViewMain.m; sourceTree = "<group>"; };
+		6C09830F1CEA04E30075EDEE /* MustWatchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustWatchTableViewController.h; sourceTree = "<group>"; };
+		6C0983101CEA04E30075EDEE /* MustWatchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustWatchTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				6C0983011CE89BC30075EDEE /* DetailViewController.m */,
 				6C0982FD1CE897450075EDEE /* MainViewController.h */,
 				6C0982FE1CE897450075EDEE /* MainViewController.m */,
+				6C09830F1CEA04E30075EDEE /* MustWatchTableViewController.h */,
+				6C0983101CEA04E30075EDEE /* MustWatchTableViewController.m */,
 				6C0982F21CE7ED9D0075EDEE /* Assets.xcassets */,
 				6C0982F41CE7ED9D0075EDEE /* LaunchScreen.storyboard */,
 				6C0982F71CE7ED9D0075EDEE /* Info.plist */,
@@ -169,6 +174,7 @@
 				6C0982FF1CE897450075EDEE /* MainViewController.m in Sources */,
 				6C0983081CE8B4D80075EDEE /* Movie.m in Sources */,
 				6C0982E81CE7ED9D0075EDEE /* main.m in Sources */,
+				6C0983111CEA04E30075EDEE /* MustWatchTableViewController.m in Sources */,
 				6C0983021CE89BC30075EDEE /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +322,7 @@
 				6C0982FC1CE7ED9D0075EDEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

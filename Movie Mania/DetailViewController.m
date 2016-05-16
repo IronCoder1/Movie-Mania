@@ -15,7 +15,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = self.eMovie.title;
+    
+    self.titleLabel.text = [NSString stringWithFormat:@"Title: %@", self.eMovie.title];
+   
+    self.genreLabel.text = [NSString stringWithFormat:@"Genre: %@", self.eMovie.genre];
+    self.posterLabel.image  = self.eMovie.posterImage;
+    self.directorLabel.text = [NSString stringWithFormat:@"Director: %@", self.eMovie.director];
+    self.runtimeLabel.text = [NSString stringWithFormat:@"Runtime: %@", self.eMovie.runtime];
+    
+//    NSDateFormatter *dateformater = [[NSDateFormatter alloc]init];
+//    self.releaseLabel.text = [NSString stringWithFormat:@"Release Date: %@",[dateformater stringFromDate:self.eMovie.releaseDate]];
+    
+    self.releaseLabel.text = [NSString stringWithFormat:@"Release Date: %@",self.eMovie.releaseDate];
+    self.plotLabel.text = [NSString stringWithFormat:@"Plot: %@", self.eMovie.shortPlot];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,4 +51,8 @@
 }
 */
 
+- (IBAction)addToMustWatch:(id)sender {
+    
+    
+}
 @end

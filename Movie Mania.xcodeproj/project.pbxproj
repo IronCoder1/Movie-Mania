@@ -17,6 +17,7 @@
 		6C0983081CE8B4D80075EDEE /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0983071CE8B4D80075EDEE /* Movie.m */; };
 		6C09830E1CE904A30075EDEE /* CellViewMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C09830D1CE904A30075EDEE /* CellViewMain.m */; };
 		6C0983111CEA04E30075EDEE /* MustWatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0983101CEA04E30075EDEE /* MustWatchTableViewController.m */; };
+		6C0983491CEA355C0075EDEE /* MustWatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0983481CEA355C0075EDEE /* MustWatchTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		6C09830D1CE904A30075EDEE /* CellViewMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellViewMain.m; sourceTree = "<group>"; };
 		6C09830F1CEA04E30075EDEE /* MustWatchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustWatchTableViewController.h; sourceTree = "<group>"; };
 		6C0983101CEA04E30075EDEE /* MustWatchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustWatchTableViewController.m; sourceTree = "<group>"; };
+		6C0983471CEA355C0075EDEE /* MustWatchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustWatchTableViewCell.h; sourceTree = "<group>"; };
+		6C0983481CEA355C0075EDEE /* MustWatchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustWatchTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				6C0982EF1CE7ED9D0075EDEE /* Main.storyboard */,
 				6C09830C1CE904A30075EDEE /* CellViewMain.h */,
 				6C09830D1CE904A30075EDEE /* CellViewMain.m */,
+				6C0983471CEA355C0075EDEE /* MustWatchTableViewCell.h */,
+				6C0983481CEA355C0075EDEE /* MustWatchTableViewCell.m */,
 				6C0983061CE8B4D80075EDEE /* Movie.h */,
 				6C0983071CE8B4D80075EDEE /* Movie.m */,
 				6C0983001CE89BC30075EDEE /* DetailViewController.h */,
@@ -175,6 +180,7 @@
 				6C0983081CE8B4D80075EDEE /* Movie.m in Sources */,
 				6C0982E81CE7ED9D0075EDEE /* main.m in Sources */,
 				6C0983111CEA04E30075EDEE /* MustWatchTableViewController.m in Sources */,
+				6C0983491CEA355C0075EDEE /* MustWatchTableViewCell.m in Sources */,
 				6C0983021CE89BC30075EDEE /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

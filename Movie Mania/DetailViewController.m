@@ -15,6 +15,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSInteger row = [_indexPath row];
+    Movie *dMovie = [self.moviesArray objectAtIndex:row];
+    
+    self.eMovie  = dMovie;
+    
     self.title = self.eMovie.title;
     
     self.titleLabel.text = [NSString stringWithFormat:@"Title: %@", self.eMovie.title];
@@ -29,7 +35,9 @@
     
     self.releaseLabel.text = [NSString stringWithFormat:@"Release Date: %@",self.eMovie.releaseDate];
     self.plotLabel.text = [NSString stringWithFormat:@"Plot: %@", self.eMovie.shortPlot];
-
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +60,23 @@
 */
 
 - (IBAction)addToMustWatch:(id)sender {
+    
+    
+    UIAlertController *myAlert = [UIAlertController alertControllerWithTitle:@"Add Movie" message:@"Add To Must Watch?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+         [self.delegate returnMustWatch:self.eMovie];
+        
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [myAlert addAction:ok];
+    [myAlert addAction:cancel];
+    [self presentViewController:myAlert animated:YES completion:nil];
+    
     
     
 }

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Movie.h"
 
 @interface MustWatchTableViewController : UITableViewController
+
+@property (strong, nonatomic) NSMutableArray *mustWatchNowArray;
+
+@property (strong, nonatomic) Movie *fMovie;
 
 @end

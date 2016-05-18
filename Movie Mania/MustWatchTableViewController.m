@@ -7,8 +7,9 @@
 //
 
 #import "MustWatchTableViewController.h"
+#import "MustWatchTableViewCell.h"
 
-@interface MustWatchTableViewController ()
+@interface MustWatchTableViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -16,14 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [self.tableView reloadData];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -32,24 +32,36 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return [self.mustWatchNowArray count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+   MustWatchTableViewCell *cell = (MustWatchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"mustWatchCell" forIndexPath:indexPath];
+    Movie *gMovie = [[Movie alloc]init];
     
-    // Configure the cell...
     
+    NSInteger row = indexPath.row;
+    
+    Movie *cMovie = [self.mustWatchNowArray objectAtIndex:row];
+    gMovie = cMovie;
+    
+    cell.titleLabel.text = [NSString stringWithFormat:@"Title: %@", gMovie.title];
+    cell.imageView.image  = gMovie.posterImage;
+    cell.releaseLabel.text = [NSString stringWithFormat:@"Release Date: %@", gMovie.releaseDate];
     return cell;
 }
-*/
+
+//-(void)setMustWatchNowArray:(NSMutableArray *)mustWatchNowArray{
+//    if (mustWatchNowArray == nil) {
+//        self.mustWatchNowArray = mustWatchNowArray;
+//    }
+//}
+
 
 /*
 // Override to support conditional editing of the table view.

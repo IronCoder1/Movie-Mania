@@ -9,8 +9,10 @@
 #import "MainViewController.h"
 #import "CellViewMain.h"
 #import "DetailViewController.h"
+#import "MustWatchTableViewController.h"
 
 @interface MainViewController ()
+- (IBAction)goToMustWatch:(id)sender;
 
 @end
 
@@ -21,8 +23,9 @@
     [super viewDidLoad];
     self.title = @"Movie Mania";
   //  self.searchTextField.delegate = self;
-    self.
-    self.movieListArray = [[NSMutableArray alloc]initWithCapacity:0];
+    self.myMustWatchArray = [[NSMutableArray alloc]initWithCapacity:0];
+    self.movieListArray = [[NSMutableArray alloc]initWithCapacity:10];
+   
     self.aMovie = [[Movie alloc]init];
     
 }
@@ -45,36 +48,39 @@
     return YES;
 }
 
-//- (NSURL *)urlComposer:(NSString *)title{
-//    
-//    NSString *common = @"http://www.omdbapi.com/?t=";
-//    NSString *titleWithPlus = title;
-//    
-//    NSRange replaceRange = [title rangeOfString:@" "];
-//    if (replaceRange.location != NSNotFound){
-//        titleWithPlus = [titleWithPlus stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-//    }
-//    
-//    NSString *secondURL = [common stringByAppendingString:titleWithPlus];
-//    NSString *thirdURL = [secondURL stringByAppendingString:@"&y=&plot=short&r=json"];
-//    
-//    NSURL *finalUrl = [NSURL URLWithString:thirdURL];
-//
-//    return finalUrl;
-//}
+- (NSURL *)urlComposer:(NSString *)title{
+    
+    NSString *common = @"http://www.omdbapi.com/?t=";
+    NSString *titleWithPlus = title;
+    
+    NSRange replaceRange = [title rangeOfString:@" "];
+    if (replaceRange.location != NSNotFound){
+        titleWithPlus = [titleWithPlus stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    }
+    
+    NSString *secondURL = [common stringByAppendingString:titleWithPlus];
+    NSString *thirdURL = [secondURL stringByAppendingString:@"&y=&plot=short&r=json"];
+    
+    NSURL *finalUrl = [NSURL URLWithString:thirdURL];
+
+    return finalUrl;
+}
 
 -(void)getJson{
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    
-   
-  
+    NSURL *titleUrl = [[NSURL alloc]init];
 
+    if ([self.searchTextField.text containsString:@" "]) {
+     titleUrl = [self urlComposer:self.searchTextField.text];
+    } else{
+  
+    
     NSString *apiAddress = [NSString stringWithFormat:@"http://www.omdbapi.com/?t=%@&y=&plot=short&r=json",self.searchTextField.text];
     
-    NSURL *titleUrl = [NSURL URLWithString:apiAddress];
-    
+    titleUrl = [NSURL URLWithString:apiAddress];
+        
+    }
     self.session = [NSURLSession sharedSession];
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:titleUrl completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -85,20 +91,34 @@
             
                 NSDictionary *omdbJSON =[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
                 
-                self.movieListArray =  [[NSMutableArray alloc]init];
-                if   (jsonError){
+            
+                if   (jsonError || omdbJSON[@"Title"] == nil ){
                     dispatch_async(dispatch_get_main_queue(), ^{
                
-                        UIAlertController *myAlert = [UIAlertController alertControllerWithTitle:@"Error!" message:@"Movie not found!, please correct title" preferredStyle:UIAlertControllerStyleAlert];
-                        
-                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) { }];
-                        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
-                        }];
+                        UIAlertController *myAlert = [UIAlertController alertControllerWithTitle:@"Error!" message:@"Movie not found! please check title" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+                        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
                         [myAlert addAction:ok];
                         [myAlert addAction:cancel];
                         [self presentViewController:myAlert animated:YES completion:nil];
+                        
                          });
-                    }else{
+                    
+                    }if (!jsonError && omdbJSON[@"Title"] != nil){
+                        
+                        /* need to implement check on exisiting titles before adding to tableview
+                         if ([omdbJSON[@"Title"] isEqualToString:bMovie.title])
+                         {
+                         UIAlertController *myAlert = [UIAlertController alertControllerWithTitle:@"Error!" message:@"Movie already checked! please scroll down" preferredStyle:UIAlertControllerStyleAlert];
+                         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+                         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
+                         [myAlert addAction:ok];
+                         [myAlert addAction:cancel];
+                         [self presentViewController:myAlert animated:YES completion:nil];
+                         }else {
+                         */
+                        
+                        
                         Movie *bMovie = [[Movie alloc]init];
                     bMovie.title = omdbJSON[@"Title"];
                     bMovie.posterName = omdbJSON[@"Poster"];
@@ -114,15 +134,16 @@
                     
                     [self.movieListArray addObject:bMovie];
                       dispatch_async(dispatch_get_main_queue(), ^{
+                          
+                          
                           [self.tableView reloadData];
+                          
                           });
+                        
                 }
            //}
         }
     }];
-    
-    
-    
     [dataTask resume];
                                       
 }
@@ -140,8 +161,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-   
-  
     CellViewMain *cell = (CellViewMain *)[tableView dequeueReusableCellWithIdentifier:@"customCell" forIndexPath:indexPath];
     
     NSInteger row = indexPath.row;
@@ -159,25 +178,48 @@
 
 
  -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- 
- //call performseguemethod on main instance and the sender is nil
- [self performSegueWithIdentifier:@"toDetailSegue" sender:nil];
+     
+     [self performSegueWithIdentifier:@"toDetailSegue" sender:nil];
      
  
  }
 
+-(void)returnMustWatch:(Movie *)myMustWatch{
+    
+    [self.myMustWatchArray addObject:myMustWatch];
+    
+}
 
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- 
-     DetailViewController *dvc = (DetailViewController *)[segue destinationViewController];
-     NSIndexPath *newPath = [self.tableView indexPathForSelectedRow];
- 
-     Movie *dMovie = self.movieListArray[newPath.row];
      
-     dvc.eMovie  = dMovie;
+     if ([segue.identifier isEqualToString:@"toDetailSegue"]) {
+         DetailViewController *dvc = (DetailViewController *)[segue destinationViewController];
+         NSIndexPath *newPath = [self.tableView indexPathForSelectedRow];
+
+         dvc.moviesArray = self.movieListArray;
+         dvc.indexPath = newPath;
+         
+         //set delegagte for detailview
+         dvc.delegate = self;
+     }
      
+        if ([segue.identifier isEqualToString:@"mustWatchSegue"]){
+            MustWatchTableViewController *myMvc = (MustWatchTableViewController *)[segue destinationViewController];
+            
+            myMvc.mustWatchNowArray = self.myMustWatchArray;
+            
+     }
+     
+ }
+
+
+- (IBAction)goToMustWatch:(id)sender {
+    
+    [self performSegueWithIdentifier:@"mustWatchSegue" sender:nil];
+    
+    
 }
 @end
